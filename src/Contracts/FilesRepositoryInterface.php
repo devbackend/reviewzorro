@@ -15,28 +15,28 @@ use ReviewZorro\Queries\FilesQuery;
  */
 interface FilesRepositoryInterface
 {
-    /**
-     * @param File $file
-     *
-     * @author Ivan Krivonos <devbackend@yandex.ru>
-     */
-    public function save(File $file);
+	/**
+	 * @param File $file
+	 *
+	 * @author Ivan Krivonos <devbackend@yandex.ru>
+	 */
+	public function save(File $file);
 
-    /**
-     * @param Uuid $id
-     *
-     * @return File|null
-     *
-     * @author Ivan Krivonos <devbackend@yandex.ru>
-     */
-    public function get(Uuid $id): ?File;
+	/**
+	 * @param Uuid $id
+	 *
+	 * @return File|null
+	 *
+	 * @author Ivan Krivonos <devbackend@yandex.ru>
+	 */
+	public function get(Uuid $id): ?File;
 
-    /**
-     * @param FilesQuery $query
-     *
-     * @return File[]
-     *
-     * @author Ivan Krivonos <devbackend@yandex.ru>
-     */
-    public function getByQuery(FilesQuery $query): array;
+	/**
+	 * @param FilesQuery $query
+	 *
+	 * @return File[]
+	 *
+	 * @author Ivan Krivonos <devbackend@yandex.ru>
+	 */
+	public function getByQuery(FilesQuery $query): array;
 }

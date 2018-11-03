@@ -15,31 +15,31 @@ use ReviewZorro\Entities\Comment;
  */
 final class ReviewMaster implements ReviewerInterface
 {
-    /** @var Collection<ReviewerInterface> */
-    private $reviewers = [];
+	/** @var Collection<ReviewerInterface> */
+	private $reviewers = [];
 
-    /**
-     * @param ReviewerInterface[] $reviewers
-     *
-     * @author Ivan Krivonos <devbackend@yandex.ru>
-     */
-    public function __construct(array $reviewers)
-    {
-        $this->reviewers = new Collection($reviewers, ReviewerInterface::class);
-    }
+	/**
+	 * @param ReviewerInterface[] $reviewers
+	 *
+	 * @author Ivan Krivonos <devbackend@yandex.ru>
+	 */
+	public function __construct(array $reviewers)
+	{
+		$this->reviewers = new Collection($reviewers, ReviewerInterface::class);
+	}
 
-    /**
-     * @inheritdoc
-     *
-     * @author Ivan Krivonos <devbackend@yandex.ru>
-     */
-    public function review(Collection $files): Collection
-    {
-        $result = new Collection([], Comment::class);
-        foreach ($this->reviewers as $reviewer) {
-            $result->merge($reviewer->review($files), true);
-        }
+	/**
+	 * @inheritdoc
+	 *
+	 * @author Ivan Krivonos <devbackend@yandex.ru>
+	 */
+	public function review(Collection $files): Collection
+	{
+		$result = new Collection([], Comment::class);
+		foreach ($this->reviewers as $reviewer) {
+			$result->merge($reviewer->review($files), true);
+		}
 
-        return $result;
-    }
+		return $result;
+	}
 }

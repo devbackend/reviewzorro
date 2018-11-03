@@ -9,7 +9,8 @@ namespace ReviewZorro\Queries;
  *
  * @author Ivan Krivonos <devbackend@yandex.ru>
  */
-class FilesQuery {
+class FilesQuery
+{
 	/** @var int */
 	private $count;
 
@@ -23,7 +24,8 @@ class FilesQuery {
 	 *
 	 * @author Ivan Krivonos <devbackend@yandex.ru>
 	 */
-	public function setCount(int $count): FilesQuery {
+	public function setCount(int $count): FilesQuery
+	{
 		$this->count = $count;
 
 		return $this;
@@ -34,7 +36,8 @@ class FilesQuery {
 	 *
 	 * @author Ivan Krivonos <devbackend@yandex.ru>
 	 */
-	public function getCount(): int {
+	public function getCount(): int
+	{
 		return $this->count;
 	}
 
@@ -45,7 +48,8 @@ class FilesQuery {
 	 *
 	 * @author Ivan Krivonos <devbackend@yandex.ru>
 	 */
-	public function setExtension(string $extension): FilesQuery {
+	public function setExtension(string $extension): FilesQuery
+	{
 		$this->extension = $extension;
 
 		return $this;
@@ -56,7 +60,8 @@ class FilesQuery {
 	 *
 	 * @author Ivan Krivonos <devbackend@yandex.ru>
 	 */
-	public function getExtension(): string {
+	public function getExtension(): string
+	{
 		return $this->extension;
 	}
 }

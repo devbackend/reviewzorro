@@ -13,35 +13,35 @@ use ReviewZorro\Entities\File;
  */
 class CommentedFile
 {
-    /** @var File */
-    private $file;
+	/** @var File */
+	private $file;
 
-    /** @var int */
-    private $line;
+	/** @var int */
+	private $line;
 
-    public function __construct(File $file, int $line)
-    {
-        $this->file = $file;
-        $this->line = $line;
-    }
+	public function __construct(File $file, int $line)
+	{
+		$this->file = $file;
+		$this->line = $line;
+	}
 
-    /**
-     * @return File
-     *
-     * @author Ivan Krivonos <devbackend@yandex.ru>
-     */
-    public function getFile(): File
-    {
-        return $this->file;
-    }
+	/**
+	 * @return File
+	 *
+	 * @author Ivan Krivonos <devbackend@yandex.ru>
+	 */
+	public function getFile(): File
+	{
+		return $this->file;
+	}
 
-    /**
-     * @return int
-     *
-     * @author Ivan Krivonos <devbackend@yandex.ru>
-     */
-    public function getLine(): int
-    {
-        return $this->line;
-    }
+	/**
+	 * @return int
+	 *
+	 * @author Ivan Krivonos <devbackend@yandex.ru>
+	 */
+	public function getLine(): int
+	{
+		return $this->line;
+	}
 }

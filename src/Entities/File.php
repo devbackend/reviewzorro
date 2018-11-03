@@ -12,15 +12,17 @@ use ReviewZorro\ValueObjects\FilePath;
  *
  * @author Ivan Krivonos <devbackend@yandex.ru>
  */
-class File {
+class File
+{
 	/** @var UuidInterface */
 	private $id;
 
 	/** @var FilePath */
 	private $path;
 
-	public function __construct(UuidInterface $id, FilePath $path) {
-		$this->id   = $id;
+	public function __construct(UuidInterface $id, FilePath $path)
+	{
+		$this->id = $id;
 		$this->path = $path;
 	}
 
@@ -29,7 +31,8 @@ class File {
 	 *
 	 * @author Ivan Krivonos <devbackend@yandex.ru>
 	 */
-	public function getId(): UuidInterface {
+	public function getId(): UuidInterface
+	{
 		return $this->id;
 	}
 
@@ -38,7 +41,8 @@ class File {
 	 *
 	 * @author Ivan Krivonos <devbackend@yandex.ru>
 	 */
-	public function getPath(): FilePath {
+	public function getPath(): FilePath
+	{
 		return $this->path;
 	}
 }

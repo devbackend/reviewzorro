@@ -15,62 +15,62 @@ use ReviewZorro\ValueObjects\CommentedFile;
  */
 class Comment
 {
-    /** @var UuidInterface */
-    private $id;
+	/** @var UuidInterface */
+	private $id;
 
-    /** @var CommentedFile */
-    private $commentedFile;
+	/** @var CommentedFile */
+	private $commentedFile;
 
-    /** @var string */
-    private $text;
+	/** @var string */
+	private $text;
 
-    /**
-     * @param UuidInterface $id
-     * @param CommentedFile $commentedFile
-     * @param string $text
-     *
-     * @throws InvalidArgumentException
-     *
-     * @author Ivan Krivonos <devbackend@yandex.ru>
-     */
-    public function __construct(UuidInterface $id, CommentedFile $commentedFile, string $text)
-    {
-        if ('' === $text) {
-            throw new InvalidArgumentException('Comment text can\'t be empty');
-        }
+	/**
+	 * @param UuidInterface $id
+	 * @param CommentedFile $commentedFile
+	 * @param string $text
+	 *
+	 * @throws InvalidArgumentException
+	 *
+	 * @author Ivan Krivonos <devbackend@yandex.ru>
+	 */
+	public function __construct(UuidInterface $id, CommentedFile $commentedFile, string $text)
+	{
+		if ('' === $text) {
+			throw new InvalidArgumentException('Comment text can\'t be empty');
+		}
 
-        $this->id = $id;
-        $this->commentedFile = $commentedFile;
-        $this->text = $text;
-    }
+		$this->id = $id;
+		$this->commentedFile = $commentedFile;
+		$this->text = $text;
+	}
 
-    /**
-     * @return UuidInterface
-     *
-     * @author Ivan Krivonos <devbackend@yandex.ru>
-     */
-    public function getId(): UuidInterface
-    {
-        return $this->id;
-    }
+	/**
+	 * @return UuidInterface
+	 *
+	 * @author Ivan Krivonos <devbackend@yandex.ru>
+	 */
+	public function getId(): UuidInterface
+	{
+		return $this->id;
+	}
 
-    /**
-     * @return CommentedFile
-     *
-     * @author Ivan Krivonos <devbackend@yandex.ru>
-     */
-    public function getCommentedFile(): CommentedFile
-    {
-        return $this->commentedFile;
-    }
+	/**
+	 * @return CommentedFile
+	 *
+	 * @author Ivan Krivonos <devbackend@yandex.ru>
+	 */
+	public function getCommentedFile(): CommentedFile
+	{
+		return $this->commentedFile;
+	}
 
-    /**
-     * @return string
-     *
-     * @author Ivan Krivonos <devbackend@yandex.ru>
-     */
-    public function getText(): string
-    {
-        return $this->text;
-    }
+	/**
+	 * @return string
+	 *
+	 * @author Ivan Krivonos <devbackend@yandex.ru>
+	 */
+	public function getText(): string
+	{
+		return $this->text;
+	}
 }

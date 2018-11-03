@@ -11,12 +11,12 @@ use ReviewZorro\Components\Collection;
  */
 interface ReviewerInterface
 {
-    /**
-     * @param Collection<File> $files
-     *
-     * @return Collection<Comment>
-     *
-     * @author Ivan Krivonos <devbackend@yandex.ru>
-     */
-    public function review(Collection $files): Collection;
+	/**
+	 * @param Collection<File> $files
+	 *
+	 * @return Collection<Comment>
+	 *
+	 * @author Ivan Krivonos <devbackend@yandex.ru>
+	 */
+	public function review(Collection $files): Collection;
 }
