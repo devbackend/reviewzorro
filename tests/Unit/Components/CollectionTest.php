@@ -8,7 +8,6 @@ use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use ReviewZorro\Components\Collection;
 use stdClass;
-use Traversable;
 
 /**
  * @coversDefaultClass \ReviewZorro\Components\Collection
@@ -17,90 +16,65 @@ use Traversable;
  */
 class CollectionTest extends TestCase
 {
-    /**
-     * @expectedException InvalidArgumentException
-     *
-     * @author Ivan Krivonos <devbackend@yandex.ru>
-     */
-    public function testShouldThrowExceptionIfArrayContainNotCompatibleTypes()
-    {
-        new Collection(['string'], stdClass::class);
-    }
+	/**
+	 * @expectedException InvalidArgumentException
+	 *
+	 * @author Ivan Krivonos <devbackend@yandex.ru>
+	 */
+	public function testShouldThrowExceptionIfArrayContainNotCompatibleTypes()
+	{
+		new Collection(['string'], stdClass::class);
+	}
 
-    /**
-     * @coversNothing
-     *
-     * @author Ivan Krivonos <devbackend@yandex.ru>
-     */
-    public function testAddItems()
-    {
-        $items = [1, 2, 3];
+	/**
+	 * @coversNothing
+	 *
+	 * @author Ivan Krivonos <devbackend@yandex.ru>
+	 */
+	public function testAddItems()
+	{
+		$items = [1, 2, 3];
 
-        $collection = new Collection([], 'int');
-        $collection->addItems($items);
+		$collection = new Collection([], 'int');
+		$collection->addItems($items);
 
-        static::assertEquals($items, $collection->getItems());
-    }
+		static::assertEquals($items, (array)$collection);
+	}
 
-    /**
-     * @coversNothing
-     *
-     * @author Ivan Krivonos <devbackend@yandex.ru>
-     */
-    public function testCollectionShouldBeTraversable()
-    {
-        static::assertInstanceOf(Traversable::class, new Collection([], 'int'));
-    }
+	/**
+	 * @covers ::merge
+	 * @covers ::count
+	 *
+	 * @author Ivan Krivonos <devbackend@yandex.ru>
+	 */
+	public function testMergeCollections()
+	{
+		$collection = new Collection(['first', 'second'], 'string');
+		$other      = new Collection(['third', 'fourth'], 'string');
 
-    /**
-     * @covers ::getItems
-     *
-     * @author Ivan Krivonos <devbackend@yandex.ru>
-     */
-    public function testGetItems()
-    {
-        $items = [new stdClass()];
+		$collection->merge($other);
 
-        $collection = new Collection($items, stdClass::class);
-        $result = $collection->getItems();
+		$result = $collection->count();
 
-        static::assertEquals($items, $result);
-    }
+		static::assertEquals(4, $result);
+	}
 
-    /**
-     * @covers ::merge
-     * @covers ::count
-     *
-     * @author Ivan Krivonos <devbackend@yandex.ru>
-     */
-    public function testMergeCollections()
-    {
-        $collection = new Collection(['first', 'second'], 'string');
-        $other = new Collection(['third', 'fourth'], 'string');
+	/**
+	 * @covers ::merge
+	 *
+	 * @author Ivan Krivonos <devbackend@yandex.ru>
+	 */
+	public function testSameElementsShouldBeCollapsedOnMerge()
+	{
+		$items = [new stdClass(), new stdClass()];
 
-        $collection->merge($other);
+		$first  = new Collection($items, stdClass::class);
+		$second = new Collection($items, stdClass::class);
 
-        $result = $collection->count();
+		$first->merge($second, true);
 
-        static::assertEquals(4, $result);
-    }
+		$result = (array)$first;
 
-    /**
-     * @covers ::merge
-     *
-     * @author Ivan Krivonos <devbackend@yandex.ru>
-     */
-    public function testSameElementsShouldBeCollapsedOnMerge()
-    {
-        $items = [new stdClass(), new stdClass()];
-
-        $first  = new Collection($items, stdClass::class);
-        $second = new Collection($items, stdClass::class);
-
-        $first->merge($second, true);
-
-        $result = $first->getItems();
-
-        static::assertEquals($items, $result);
-    }
+		static::assertEquals($items, $result);
+	}
 }

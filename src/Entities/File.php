@@ -8,7 +8,7 @@ use Ramsey\Uuid\UuidInterface;
 use ReviewZorro\ValueObjects\FilePath;
 
 /**
- *
+ * Entity for files.
  *
  * @author Ivan Krivonos <devbackend@yandex.ru>
  */

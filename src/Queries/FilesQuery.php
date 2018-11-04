@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace ReviewZorro\Queries;
 
 /**
- *
+ * Files query for repository.
  *
  * @author Ivan Krivonos <devbackend@yandex.ru>
  */

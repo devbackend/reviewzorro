@@ -8,15 +8,12 @@ use ArrayIterator;
 use InvalidArgumentException;
 
 /**
- *
+ * Collection of selected types.
  *
  * @author Ivan Krivonos <devbackend@yandex.ru>
  */
 class Collection extends ArrayIterator
 {
-	/** @var array */
-	private $items;
-
 	/** @var string */
 	private $type;
 
@@ -35,7 +32,6 @@ class Collection extends ArrayIterator
 		}
 
 		$this->type = $type;
-		$this->items = [];
 
 		$this->addItems($items);
 	}
@@ -52,41 +48,26 @@ class Collection extends ArrayIterator
 		$this->checkItems($items);
 
 		foreach ($items as $item) {
-			$this->items[] = $item;
+			$this[] = $item;
 		}
 	}
 
 	/**
-	 * @return array
-	 *
-	 * @author Ivan Krivonos <devbackend@yandex.ru>
-	 */
-	public function getItems(): array
-	{
-		return $this->items;
-	}
-
-	/**
 	 * @param Collection $collection
-	 * @param bool $collapseSame
+	 * @param bool       $collapseSame
 	 *
 	 * @author Ivan Krivonos <devbackend@yandex.ru>
 	 */
 	public function merge(Collection $collection, bool $collapseSame = false)
 	{
 		$items = [];
-		foreach ($collection->getItems() as $item) {
-			if (false === $collapseSame || false === array_search($item, $this->items)) {
+		foreach ($collection as $item) {
+			if (false === $collapseSame || false === array_search($item, (array)$this)) {
 				$items[] = $item;
 			}
 		}
 
 		$this->addItems($items);
-	}
-
-	public function count(): int
-	{
-		return count($this->items);
 	}
 
 	/**
