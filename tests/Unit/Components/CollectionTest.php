@@ -7,6 +7,7 @@ namespace ReviewZorro\Unit\Components;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use ReviewZorro\Components\Collection;
+use ReviewZorro\ValueObjects\FilePath;
 use stdClass;
 
 /**
@@ -21,24 +22,34 @@ class CollectionTest extends TestCase
 	 *
 	 * @author Ivan Krivonos <devbackend@yandex.ru>
 	 */
-	public function testShouldThrowExceptionIfArrayContainNotCompatibleTypes()
+	public function testShouldThrowExceptionIfArrayContainNotCompatiblePrimitiveTypes()
 	{
 		new Collection(['string'], stdClass::class);
 	}
 
 	/**
-	 * @coversNothing
+	 * @expectedException InvalidArgumentException
+	 *
+	 * @author Ivan Krivonos <devbackend@yandex.ru>
+	 */
+	public function testShouldThrowExceptionIfArrayContainNotCompatibleComplexTypes()
+	{
+		$collection = new Collection([new FilePath('/foo/bar')], FilePath::class);
+
+		$collection->addItems([new stdClass()]);
+	}
+
+	/**
+	 * @covers ::addItems
 	 *
 	 * @author Ivan Krivonos <devbackend@yandex.ru>
 	 */
 	public function testAddItems()
 	{
-		$items = [1, 2, 3];
+		$collection = new Collection([0], 'int');
+		$collection->addItems([1, 2, 3]);
 
-		$collection = new Collection([], 'int');
-		$collection->addItems($items);
-
-		static::assertEquals($items, (array)$collection);
+		static::assertEquals([0, 1, 2, 3], (array)$collection);
 	}
 
 	/**
@@ -76,5 +87,14 @@ class CollectionTest extends TestCase
 		$result = (array)$first;
 
 		static::assertEquals($items, $result);
+	}
+
+	public function testCheckBoolAndBoolean()
+	{
+		$items = [true, true];
+
+		$collection = new Collection($items, 'bool');
+
+		static::assertEquals($items, (array)$collection);
 	}
 }
