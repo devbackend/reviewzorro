@@ -4,20 +4,15 @@ declare(strict_types=1);
 
 namespace ReviewZorro\Unit\Queries;
 
+use PHPUnit\Framework\TestCase;
 use ReviewZorro\Queries\FilesQuery;
 
 /**
- * @coversDefaultClass \ReviewZorro\Queries\FilesQuery
+ * Tests for FilesQuery class.
  *
  * @author Ivan Krivonos <devbackend@yandex.ru>
  */
-class FilesQueryTest extends \PHPUnit\Framework\TestCase {
-	/**
-	 * @covers ::setCount
-	 * @covers ::getCount
-	 *
-	 * @author Ivan Krivonos <devbackend@yandex.ru>
-	 */
+class FilesQueryTest extends TestCase {
 	public function testSetterAndGetterForCount() {
 		$query = new FilesQuery();
 

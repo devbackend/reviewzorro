@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace ReviewZorro\Unit\ValueObjects;
 
+use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 use ReviewZorro\Entities\File;
 use ReviewZorro\ValueObjects\CommentedFile;
 use ReviewZorro\ValueObjects\FilePath;
 
 /**
- * @coversDefaultClass \ReviewZorro\ValueObjects\CommentedFile
+ * Tests for CommentedFile value-object.
  *
  * @author Ivan Krivonos <devbackend@yandex.ru>
  */
-class CommentedFileTest extends \PHPUnit\Framework\TestCase {
+class CommentedFileTest extends TestCase {
 	/** @var File */
 	private $file;
 
@@ -27,12 +28,6 @@ class CommentedFileTest extends \PHPUnit\Framework\TestCase {
 		);
 	}
 
-	/**
-	 * @covers ::getFile
-	 * @covers ::getLine
-	 *
-	 * @author Ivan Krivonos <devbackend@yandex.ru>
-	 */
 	public function testGetters() {
 		$commentedFile = new CommentedFile($this->file, 10);
 

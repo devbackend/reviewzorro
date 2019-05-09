@@ -11,17 +11,12 @@ use ReviewZorro\Reviewers\ReviewMaster;
 use ReviewZorro\Services\MakeCodeReview;
 
 /**
- * @coversDefaultClass \ReviewZorro\Services\MakeCodeReview
+ * Tests for code review service.
  *
  * @author Ivan Krivonos <devbackend@yandex.ru>
  */
 class MakeCodeReviewTest extends MockeryTestCase
 {
-	/**
-	 * @covers ::run
-	 *
-	 * @author Ivan Krivonos <devbackend@yandex.ru>
-	 */
 	public function testRunMethod()
 	{
 		$git    = Mockery::spy(GitInterfaces::class);

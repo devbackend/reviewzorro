@@ -10,7 +10,7 @@ use ReviewZorro\Components\Collection;
 use stdClass;
 
 /**
- * @coversDefaultClass \ReviewZorro\Components\Collection
+ * Tests for \ReviewZorro\Components\Collection.
  *
  * @author Ivan Krivonos <devbackend@yandex.ru>
  */
@@ -18,19 +18,12 @@ class CollectionTest extends TestCase
 {
 	/**
 	 * @expectedException InvalidArgumentException
-	 *
-	 * @author Ivan Krivonos <devbackend@yandex.ru>
 	 */
 	public function testShouldThrowExceptionIfArrayContainNotCompatibleTypes()
 	{
 		new Collection(['string'], stdClass::class);
 	}
 
-	/**
-	 * @coversNothing
-	 *
-	 * @author Ivan Krivonos <devbackend@yandex.ru>
-	 */
 	public function testAddItems()
 	{
 		$items = [1, 2, 3];
@@ -41,12 +34,6 @@ class CollectionTest extends TestCase
 		static::assertEquals($items, (array)$collection);
 	}
 
-	/**
-	 * @covers ::merge
-	 * @covers ::count
-	 *
-	 * @author Ivan Krivonos <devbackend@yandex.ru>
-	 */
 	public function testMergeCollections()
 	{
 		$collection = new Collection(['first', 'second'], 'string');
@@ -59,11 +46,6 @@ class CollectionTest extends TestCase
 		static::assertEquals(4, $result);
 	}
 
-	/**
-	 * @covers ::merge
-	 *
-	 * @author Ivan Krivonos <devbackend@yandex.ru>
-	 */
 	public function testSameElementsShouldBeCollapsedOnMerge()
 	{
 		$items = [new stdClass(), new stdClass()];

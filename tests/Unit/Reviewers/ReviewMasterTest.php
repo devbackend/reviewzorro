@@ -13,17 +13,12 @@ use ReviewZorro\Entities\File;
 use ReviewZorro\Reviewers\ReviewMaster;
 
 /**
- * @coversDefaultClass \ReviewZorro\Reviewers\ReviewMaster
+ * Tests for ReviewMaster component.
  *
  * @author Ivan Krivonos <devbackend@yandex.ru>
  */
 class ReviewMasterTest extends MockeryTestCase
 {
-	/**
-	 * @covers ::review
-	 *
-	 * @author Ivan Krivonos <devbackend@yandex.ru>
-	 */
 	public function testReview()
 	{
 		$reviewer = Mockery::spy(ReviewerInterface::class);

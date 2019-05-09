@@ -4,22 +4,17 @@ declare(strict_types=1);
 
 namespace ReviewZorro\Unit\Entities;
 
+use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 use ReviewZorro\Entities\File;
 use ReviewZorro\ValueObjects\FilePath;
 
 /**
- * @coversDefaultClass \ReviewZorro\Entities\File
+ * Tests for File entity.
  *
  * @author Ivan Krivonos <devbackend@yandex.ru>
  */
-class FileTest extends \PHPUnit\Framework\TestCase {
-	/**
-	 * @covers ::getId
-	 * @covers ::getPath
-	 *
-	 * @author Ivan Krivonos <devbackend@yandex.ru>
-	 */
+class FileTest extends TestCase {
 	public function testGetters() {
 		$id   = Uuid::uuid4();
 		$path = new FilePath('/foo/bar/filename.php');

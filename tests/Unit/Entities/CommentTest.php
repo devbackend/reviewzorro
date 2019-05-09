@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace ReviewZorro\Unit\Entities;
 
+use InvalidArgumentException;
+use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 use ReviewZorro\Entities\File;
 use ReviewZorro\Entities\Comment;
@@ -11,11 +13,11 @@ use ReviewZorro\ValueObjects\CommentedFile;
 use ReviewZorro\ValueObjects\FilePath;
 
 /**
- * @coversDefaultClass \ReviewZorro\Entities\Comment
+ * Tests for Commecnt entity.
  *
  * @author Ivan Krivonos <devbackend@yandex.ru>
  */
-class CommentTest extends \PHPUnit\Framework\TestCase {
+class CommentTest extends TestCase {
 	const MESSAGE = 'Message text';
 
 	/** @var File */
@@ -30,13 +32,6 @@ class CommentTest extends \PHPUnit\Framework\TestCase {
 		);
 	}
 
-	/**
-	 * @covers ::getId
-	 * @covers ::getCommentedFile
-	 * @covers ::getText
-	 *
-	 * @author Ivan Krivonos <devbackend@yandex.ru>
-	 */
 	public function testGetters() {
 		$id            = Uuid::uuid4();
 		$commentedFile = new CommentedFile($this->file, 10);
@@ -49,8 +44,6 @@ class CommentTest extends \PHPUnit\Framework\TestCase {
 
 	/**
 	 * @expectedException InvalidArgumentException
-	 *
-	 * @author Ivan Krivonos <devbackend@yandex.ru>
 	 */
 	public function testShouldThrowExceptionOnEmptyMessage() {
 		new Comment(

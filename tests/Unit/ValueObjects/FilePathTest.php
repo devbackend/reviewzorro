@@ -5,30 +5,24 @@ declare(strict_types=1);
 namespace ReviewZorro\Unit\ValueObjects;
 
 use InvalidArgumentException;
+use PHPUnit\Framework\TestCase;
 use ReviewZorro\ValueObjects\FilePath;
 
 /**
- * @coversDefaultClass \ReviewZorro\ValueObjects\FilePath
+ * Tests for filePath value-object.
  *
  * @author Ivan Krivonos <devbackend@yandex.ru>
  */
-class FilePathTest extends \PHPUnit\Framework\TestCase {
+class FilePathTest extends TestCase {
 	const FILE_PATH = '/foo/bar/filename.php';
 
 	/**
 	 * @expectedException InvalidArgumentException
-	 *
-	 * @author Ivan Krivonos <devbackend@yandex.ru>
 	 */
 	public function testShouldThrowExceptionOnEmptyFileName() {
 		new FilePath('');
 	}
 
-	/**
-	 * @covers ::__toString
-	 *
-	 * @author Ivan Krivonos <devbackend@yandex.ru>
-	 */
 	public function testFilePathToString() {
 		$path = new FilePath(static::FILE_PATH);
 
@@ -37,12 +31,6 @@ class FilePathTest extends \PHPUnit\Framework\TestCase {
 		static::assertEquals(static::FILE_PATH, $result);
 	}
 
-	/**
-	 * @covers ::getExtension
-	 * @covers ::getName
-	 *
-	 * @author Ivan Krivonos <devbackend@yandex.ru>
-	 */
 	public function testGetters() {
 		$path = new FilePath(static::FILE_PATH);
 
@@ -51,11 +39,6 @@ class FilePathTest extends \PHPUnit\Framework\TestCase {
 		static::assertEquals('filename', $path->getName(false));
 	}
 
-	/**
-	 * @covers ::getExtension
-	 *
-	 * @author Ivan Krivonos <devbackend@yandex.ru>
-	 */
 	public function testShouldReturnNullForExtensionIfNotExists() {
 		$path = new FilePath('/foo/bar');
 
