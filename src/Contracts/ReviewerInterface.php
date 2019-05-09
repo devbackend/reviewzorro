@@ -2,7 +2,8 @@
 
 namespace ReviewZorro\Contracts;
 
-use ReviewZorro\Components\Collection;
+use ReviewZorro\Entities\Comment;
+use ReviewZorro\Entities\File;
 
 /**
  * Reviewer for file.
@@ -12,11 +13,11 @@ use ReviewZorro\Components\Collection;
 interface ReviewerInterface
 {
 	/**
-	 * @param Collection<File> $files
+	 * @param File[] $files
 	 *
-	 * @return Collection<Comment>
+	 * @return Comment[]
 	 *
 	 * @author Ivan Krivonos <devbackend@yandex.ru>
 	 */
-	public function review(Collection $files): Collection;
+	public function review(array $files): array;
 }

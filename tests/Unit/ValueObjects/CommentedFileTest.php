@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace ReviewZorro\Unit\ValueObjects;
 
 use PHPUnit\Framework\TestCase;
-use Ramsey\Uuid\Uuid;
 use ReviewZorro\Entities\File;
 use ReviewZorro\ValueObjects\CommentedFile;
 use ReviewZorro\ValueObjects\FilePath;
@@ -23,7 +22,6 @@ class CommentedFileTest extends TestCase {
 		parent::setUp();
 
 		$this->file = new File(
-			Uuid::uuid4(),
 			new FilePath('/foo/bar/filename.php')
 		);
 	}

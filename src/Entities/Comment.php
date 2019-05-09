@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace ReviewZorro\Entities;
 
 use InvalidArgumentException;
-use Ramsey\Uuid\UuidInterface;
 use ReviewZorro\ValueObjects\CommentedFile;
 
 /**
@@ -15,9 +14,6 @@ use ReviewZorro\ValueObjects\CommentedFile;
  */
 class Comment
 {
-	/** @var UuidInterface */
-	private $id;
-
 	/** @var CommentedFile */
 	private $commentedFile;
 
@@ -25,33 +21,21 @@ class Comment
 	private $text;
 
 	/**
-	 * @param UuidInterface $id
 	 * @param CommentedFile $commentedFile
-	 * @param string $text
+	 * @param string        $text
 	 *
 	 * @throws InvalidArgumentException
 	 *
 	 * @author Ivan Krivonos <devbackend@yandex.ru>
 	 */
-	public function __construct(UuidInterface $id, CommentedFile $commentedFile, string $text)
+	public function __construct(CommentedFile $commentedFile, string $text)
 	{
 		if ('' === $text) {
 			throw new InvalidArgumentException('Comment text can\'t be empty');
 		}
 
-		$this->id = $id;
 		$this->commentedFile = $commentedFile;
-		$this->text = $text;
-	}
-
-	/**
-	 * @return UuidInterface
-	 *
-	 * @author Ivan Krivonos <devbackend@yandex.ru>
-	 */
-	public function getId(): UuidInterface
-	{
-		return $this->id;
+		$this->text          = $text;
 	}
 
 	/**

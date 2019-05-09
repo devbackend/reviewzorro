@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace ReviewZorro\Entities;
 
-use Ramsey\Uuid\UuidInterface;
 use ReviewZorro\ValueObjects\FilePath;
 
 /**
@@ -14,26 +13,17 @@ use ReviewZorro\ValueObjects\FilePath;
  */
 class File
 {
-	/** @var UuidInterface */
-	private $id;
-
 	/** @var FilePath */
 	private $path;
 
-	public function __construct(UuidInterface $id, FilePath $path)
-	{
-		$this->id = $id;
-		$this->path = $path;
-	}
-
 	/**
-	 * @return UuidInterface
+	 * @param FilePath $path
 	 *
-	 * @author Ivan Krivonos <devbackend@yandex.ru>
+	 * @author Кривонос Иван <krivonos.iv@dns-shop.ru>
 	 */
-	public function getId(): UuidInterface
+	public function __construct(FilePath $path)
 	{
-		return $this->id;
+		$this->path = $path;
 	}
 
 	/**
