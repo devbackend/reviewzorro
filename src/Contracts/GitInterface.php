@@ -12,7 +12,7 @@ use ReviewZorro\Entities\File;
  *
  * @author Ivan Krivonos <devbackend@yandex.ru>
  */
-interface GitInterfaces
+interface GitInterface
 {
 	/**
 	 * @return File[]

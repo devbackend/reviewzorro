@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace ReviewZorro\Services;
 
-use ReviewZorro\Contracts\GitInterfaces;
+use ReviewZorro\Contracts\GitInterface;
 use ReviewZorro\Reviewers\ReviewMaster;
 
 /**
@@ -14,20 +14,20 @@ use ReviewZorro\Reviewers\ReviewMaster;
  */
 class MakeCodeReview
 {
-	/** @var GitInterfaces */
+	/** @var GitInterface */
 	private $git;
 
 	/** @var ReviewMaster */
 	private $master;
 
 	/**
-	 * @param GitInterfaces $changes
-	 * @param ReviewMaster  $master
+	 * @param GitInterface $changes
+	 * @param ReviewMaster $master
 	 *
 	 * @author Ivan Krivonos <devbackend@yandex.ru>
 	 */
 	public function __construct(
-		GitInterfaces $changes,
+		GitInterface $changes,
 		ReviewMaster $master
 	) {
 		$this->git    = $changes;

@@ -6,7 +6,7 @@ namespace ReviewZorro\Unit\Services;
 
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryTestCase;
-use ReviewZorro\Contracts\GitInterfaces;
+use ReviewZorro\Contracts\GitInterface;
 use ReviewZorro\Reviewers\ReviewMaster;
 use ReviewZorro\Services\MakeCodeReview;
 
@@ -19,7 +19,7 @@ class MakeCodeReviewTest extends MockeryTestCase
 {
 	public function testRunMethod()
 	{
-		$git    = Mockery::spy(GitInterfaces::class);
+		$git    = Mockery::spy(GitInterface::class);
 		$master = new ReviewMaster([]);
 
 		$service = new MakeCodeReview($git, $master);
