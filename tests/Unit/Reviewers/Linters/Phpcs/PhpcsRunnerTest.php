@@ -23,6 +23,6 @@ class PhpcsRunnerTest extends MockeryTestCase
 
 		$result = $runner->run($filePath);
 
-		static::assertContains('FILE: ' . $filePath, $result);
+		static::assertContains('examples/tests/PhpcsLintingClass.php', $result);
 	}
 }
