@@ -27,5 +27,4 @@ class MakeCodeReviewTest extends MockeryTestCase
 
 		$git->shouldHaveReceived('send');
 	}
-
 }
