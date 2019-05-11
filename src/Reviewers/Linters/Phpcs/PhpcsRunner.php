@@ -24,6 +24,6 @@ class PhpcsRunner
 
 		exec(implode(' ', $command), $result);
 
-		return implode("\n", $result);
+		return implode(PHP_EOL, $result);
 	}
 }

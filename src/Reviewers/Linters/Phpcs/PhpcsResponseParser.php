@@ -29,7 +29,7 @@ class PhpcsResponseParser
 
 		$regexp = '/(\d+)\s+\|\s+\w+\s\|\s+\[[^]]]\s+(.*)/im';
 
-		$rows = explode("\n", $response);
+		$rows = explode(PHP_EOL, $response);
 		foreach ($rows as $row) {
 			preg_match_all($regexp, $row, $matches);
 			if (! isset($matches[0][0])) {
