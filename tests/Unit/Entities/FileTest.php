@@ -4,29 +4,51 @@ declare(strict_types=1);
 
 namespace ReviewZorro\Unit\Entities;
 
-use Ramsey\Uuid\Uuid;
+use InvalidArgumentException;
+use PHPUnit\Framework\TestCase;
 use ReviewZorro\Entities\File;
-use ReviewZorro\ValueObjects\FilePath;
 
 /**
- * @coversDefaultClass \ReviewZorro\Entities\File
+ * Tests for File entity.
  *
  * @author Ivan Krivonos <devbackend@yandex.ru>
  */
-class FileTest extends \PHPUnit\Framework\TestCase {
-	/**
-	 * @covers ::getId
-	 * @covers ::getPath
-	 *
-	 * @author Ivan Krivonos <devbackend@yandex.ru>
-	 */
-	public function testGetters() {
-		$id   = Uuid::uuid4();
-		$path = new FilePath('/foo/bar/filename.php');
-		$file = new File($id, $path);
+class FileTest extends TestCase
+{
+	public function testGetters()
+	{
+		$path = '/foo/bar/filename.php';
+		$file = new File($path);
 
-		static::assertEquals($id, $file->getId());
 		static::assertEquals($path, $file->getPath());
+		static::assertEquals('php', $file->getExtension());
+		static::assertEquals('filename.php', $file->getName());
+		static::assertEquals('filename', $file->getName(false));
 	}
 
+	const FILE_PATH = '/foo/bar/filename.php';
+
+	/**
+	 * @expectedException InvalidArgumentException
+	 */
+	public function testShouldThrowExceptionOnEmptyFileName()
+	{
+		new File('');
+	}
+
+	public function testShouldReturnNullForExtensionIfNotExists()
+	{
+		$file = new File('/foo/bar');
+
+		$result = $file->getExtension();
+
+		static::assertNull($result);
+	}
+
+	public function testEqualsGetNameForFilenameWithoutExtension()
+	{
+		$file = new File('/foo/bar');
+
+		static::assertEquals($file->getName(), $file->getName(false));
+	}
 }

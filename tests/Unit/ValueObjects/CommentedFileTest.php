@@ -4,36 +4,29 @@ declare(strict_types=1);
 
 namespace ReviewZorro\Unit\ValueObjects;
 
-use Ramsey\Uuid\Uuid;
+use PHPUnit\Framework\TestCase;
 use ReviewZorro\Entities\File;
 use ReviewZorro\ValueObjects\CommentedFile;
-use ReviewZorro\ValueObjects\FilePath;
 
 /**
- * @coversDefaultClass \ReviewZorro\ValueObjects\CommentedFile
+ * Tests for CommentedFile value-object.
  *
  * @author Ivan Krivonos <devbackend@yandex.ru>
  */
-class CommentedFileTest extends \PHPUnit\Framework\TestCase {
+class CommentedFileTest extends TestCase
+{
 	/** @var File */
 	private $file;
 
-	protected function setUp() {
+	protected function setUp()
+	{
 		parent::setUp();
 
-		$this->file = new File(
-			Uuid::uuid4(),
-			new FilePath('/foo/bar/filename.php')
-		);
+		$this->file = new File('/foo/bar/filename.php');
 	}
 
-	/**
-	 * @covers ::getFile
-	 * @covers ::getLine
-	 *
-	 * @author Ivan Krivonos <devbackend@yandex.ru>
-	 */
-	public function testGetters() {
+	public function testGetters()
+	{
 		$commentedFile = new CommentedFile($this->file, 10);
 
 		static::assertEquals($this->file, $commentedFile->getFile());

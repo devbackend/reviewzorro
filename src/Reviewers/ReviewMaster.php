@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace ReviewZorro\Reviewers;
 
-use ReviewZorro\Components\Collection;
 use ReviewZorro\Contracts\ReviewerInterface;
-use ReviewZorro\Entities\Comment;
 
 /**
  * Master of code review; contain collection of reviewers and pass files to it.
@@ -15,7 +13,7 @@ use ReviewZorro\Entities\Comment;
  */
 final class ReviewMaster implements ReviewerInterface
 {
-	/** @var Collection<ReviewerInterface> */
+	/** @var ReviewerInterface[] */
 	private $reviewers = [];
 
 	/**
@@ -25,7 +23,7 @@ final class ReviewMaster implements ReviewerInterface
 	 */
 	public function __construct(array $reviewers)
 	{
-		$this->reviewers = new Collection($reviewers, ReviewerInterface::class);
+		$this->reviewers = $reviewers;
 	}
 
 	/**
@@ -33,11 +31,11 @@ final class ReviewMaster implements ReviewerInterface
 	 *
 	 * @author Ivan Krivonos <devbackend@yandex.ru>
 	 */
-	public function review(Collection $files): Collection
+	public function review(array $files): array
 	{
-		$result = new Collection([], Comment::class);
+		$result = [];
 		foreach ($this->reviewers as $reviewer) {
-			$result->merge($reviewer->review($files), true);
+			$result = array_merge($result, $reviewer->review($files));
 		}
 
 		return $result;

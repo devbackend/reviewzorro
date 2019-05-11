@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace ReviewZorro\Contracts;
 
-use ReviewZorro\Components\Collection;
+use ReviewZorro\Entities\Comment;
 use ReviewZorro\Entities\File;
 
 /**
@@ -12,7 +12,7 @@ use ReviewZorro\Entities\File;
  *
  * @author Ivan Krivonos <devbackend@yandex.ru>
  */
-interface GitInterfaces
+interface GitInterface
 {
 	/**
 	 * @return File[]
@@ -22,9 +22,9 @@ interface GitInterfaces
 	public function getFiles(): array;
 
 	/**
-	 * @param Collection $comments
+	 * @param Comment[] $comments
 	 *
 	 * @author Ivan Krivonos <devbackend@yandex.ru>
 	 */
-	public function send(Collection $comments);
+	public function send(array $comments);
 }
