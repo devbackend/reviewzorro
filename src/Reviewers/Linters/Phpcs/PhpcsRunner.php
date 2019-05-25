@@ -13,12 +13,14 @@ use ReviewZorro\Helpers\PathHelper;
  */
 class PhpcsRunner
 {
-	public function run(string $filename): string
+	public function run(string $filename, ?string $standard = null): string
 	{
+		$standard = $standard ?? PathHelper::path('phpcs.xml');
+
 		$command = [
 			PathHelper::path('vendor/bin/phpcs'),
 			'--extensions=php',
-			'--standard=' . PathHelper::path('phpcs.xml'),
+			'--standard=' . $standard,
 			$filename,
 		];
 

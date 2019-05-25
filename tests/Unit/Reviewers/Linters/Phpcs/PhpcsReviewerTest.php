@@ -35,7 +35,7 @@ Time: 32ms; Memory: 6Mb
 ';
 
 		$runner = Mockery::mock(PhpcsRunner::class);
-		$runner->shouldReceive('run')->withArgs([$file->getPath()])->andReturn($response);
+		$runner->shouldReceive('run')->withArgs([$file->getPath(), null])->andReturn($response);
 
 		$parser = Mockery::mock(PhpcsResponseParser::class);
 		$parser->shouldReceive('parse')->withArgs([$file, $response]);
