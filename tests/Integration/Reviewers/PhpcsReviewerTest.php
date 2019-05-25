@@ -42,14 +42,14 @@ class PhpcsReviewerTest extends TestCase
 
 		self::assertEquals($first->getPath(), $comments[0]->getCommentedFile()->getFile()->getPath());
 		self::assertEquals(3, $comments[0]->getCommentedFile()->getLine());
-		self::assertEquals('Each class must be in a namespace of at least one level (a top-level vendor name)', $comments[0]->getText());
+		self::assertStringStartsWith('Each class must be in a namespace', $comments[0]->getText());
 
 		self::assertEquals($first->getPath(), $comments[2]->getCommentedFile()->getFile()->getPath());
 		self::assertEquals(4, $comments[2]->getCommentedFile()->getLine());
-		self::assertEquals('Tabs must be used to indent lines; spaces are not allowed', $comments[2]->getText());
+		self::assertStringStartsWith('Tabs must be used to indent lines', $comments[2]->getText());
 
 		self::assertEquals($second->getPath(), $comments[5]->getCommentedFile()->getFile()->getPath());
 		self::assertEquals(5, $comments[5]->getCommentedFile()->getLine());
-		self::assertEquals('Opening brace of a class must be on the line after the definition', $comments[5]->getText());
+		self::assertStringStartsWith('Opening brace of a class must be on the line', $comments[5]->getText());
 	}
 }
