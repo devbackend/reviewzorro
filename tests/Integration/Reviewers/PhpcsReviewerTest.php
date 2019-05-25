@@ -13,7 +13,7 @@ use ReviewZorro\Reviewers\Linters\Phpcs\PhpcsReviewer;
 use ReviewZorro\Reviewers\Linters\Phpcs\PhpcsRunner;
 
 /**
- * Integration tests of service for making code review.
+ * Integration tests of Phpcs Reviewer.
  *
  * @author Ivan Krivonos <devbackend@yandex.ru>
  */
