@@ -1,6 +1,6 @@
 <?php
 
-class PhpcsLintingClass {
+class PhpLintingClass {
     public function fooMethod()
     {}
 }

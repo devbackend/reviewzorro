@@ -17,12 +17,12 @@ class PhpcsRunnerTest extends MockeryTestCase
 {
 	public function testRun()
 	{
-		$filePath = PathHelper::path('examples/tests/PhpcsLintingClass.php');
+		$filePath = PathHelper::path('examples/tests/PhpLintingClass.php');
 
 		$runner = new PhpcsRunner();
 
 		$result = $runner->run($filePath);
 
-		static::assertContains('examples/tests/PhpcsLintingClass.php', $result);
+		static::assertContains('examples/tests/PhpLintingClass.php', $result);
 	}
 }

@@ -32,8 +32,8 @@ class PhpcsReviewerTest extends TestCase
 
 	public function testRunWithRealPhpcsReviewer()
 	{
-		$first  = new File(PathHelper::path('examples/tests/PhpcsLintingClass.php'));
-		$second = new File(PathHelper::path('examples/tests/PhpcsLintingSecondClass.php'));
+		$first  = new File(PathHelper::path('examples/tests/PhpLintingClass.php'));
+		$second = new File(PathHelper::path('examples/tests/PhpLintingSecondClass.php'));
 
 		/** @var Comment[] $comments */
 		$comments = $this->reviewer->review([$first, $second]);

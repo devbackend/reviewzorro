@@ -2,5 +2,5 @@
 
 namespace examples\tests;
 
-class PhpcsLintingSecondClass {
+class PhpLintingSecondClass {
 }

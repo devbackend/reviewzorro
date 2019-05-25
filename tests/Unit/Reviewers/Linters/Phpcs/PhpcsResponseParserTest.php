@@ -26,7 +26,7 @@ class PhpcsResponseParserTest extends TestCase
 	{
 		parent::setUp();
 
-		$this->file   = new File('examples/tests/PhpcsLintingClass.php');
+		$this->file   = new File('examples/tests/PhpLintingClass.php');
 		$this->parser = new PhpcsResponseParser();
 	}
 
