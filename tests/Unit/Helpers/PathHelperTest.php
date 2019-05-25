@@ -43,4 +43,9 @@ class PathHelperTest extends TestCase
 	{
 		static::assertEquals($this->root, PathHelper::path(''));
 	}
+
+	public function testPathShouldReturnJoinedDirectoryParamForAbsolutePath()
+	{
+		static::assertEquals($this->root . '/tests/unit', PathHelper::path('tests', 'unit'));
+	}
 }

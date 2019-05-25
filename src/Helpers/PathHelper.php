@@ -26,18 +26,20 @@ class PathHelper
 	/**
 	 * Build absolute path from relative.
 	 *
-	 * @param string $relative
+	 * @param string[] $relative
 	 *
 	 * @return string
 	 *
 	 * @author Ivan Krivonos <devbackend@yandex.ru>
 	 */
-	public static function path(string $relative): string
+	public static function path(string ...$relative): string
 	{
-		if ('' === $relative) {
+		$relative = array_filter($relative);
+
+		if (0 === count($relative)) {
 			return static::root();
 		}
 
-		return static::root() . DIRECTORY_SEPARATOR . $relative;
+		return static::root() . DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, $relative);
 	}
 }

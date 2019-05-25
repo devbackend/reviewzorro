@@ -18,20 +18,20 @@ class MakeCodeReview
 	private $git;
 
 	/** @var ReviewMaster */
-	private $master;
+	private $reviewer;
 
 	/**
-	 * @param GitInterface $changes
-	 * @param ReviewMaster $master
+	 * @param GitInterface $git
+	 * @param ReviewMaster $reviewer
 	 *
 	 * @author Ivan Krivonos <devbackend@yandex.ru>
 	 */
 	public function __construct(
-		GitInterface $changes,
-		ReviewMaster $master
+		GitInterface $git,
+		ReviewMaster $reviewer
 	) {
-		$this->git    = $changes;
-		$this->master = $master;
+		$this->git      = $git;
+		$this->reviewer = $reviewer;
 	}
 
 	/**
@@ -42,7 +42,7 @@ class MakeCodeReview
 	public function run()
 	{
 		$files    = $this->git->getFiles();
-		$comments = $this->master->review($files);
+		$comments = $this->reviewer->review($files);
 
 		$this->git->send($comments);
 	}
