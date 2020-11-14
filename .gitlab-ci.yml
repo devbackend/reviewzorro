@@ -40,3 +40,12 @@ tests:unit:
         - build:composer
     cache:
         key: "build-${CI_COMMIT_REF_SLUG}"
+
+tests:coverage:
+    stage: test
+    script:
+        - vendor/bin/phpunit --coverage-text --colors=never tests
+    dependencies:
+        - build:composer
+    cache:
+        key: "build-${CI_COMMIT_REF_SLUG}"
