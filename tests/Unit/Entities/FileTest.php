@@ -15,8 +15,6 @@ use ReviewZorro\Entities\File;
  */
 class FileTest extends TestCase
 {
-	private const FILE_PATH = '/foo/bar/filename.php';
-
 	public function testGetters()
 	{
 		$path = '/foo/bar/filename.php';
