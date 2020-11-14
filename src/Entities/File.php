@@ -59,7 +59,7 @@ class File
 
 		$result = end($parts);
 		if (false === $withExtension) {
-			$result = str_replace('.'.$this->getExtension(), '', $result);
+			$result = str_replace('.' . $this->getExtension(), '', $result);
 		}
 
 		return $result;
