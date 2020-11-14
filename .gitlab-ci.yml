@@ -32,6 +32,15 @@ lint:phpcs:
     cache:
         key: "build-${CI_COMMIT_REF_SLUG}"
 
+lint:phpmd:
+    stage: test
+    script:
+        - vendor/bin/phpmd src,tests text phpmd.xml
+    dependencies:
+        - build
+    cache:
+        key: "build-${CI_COMMIT_REF_SLUG}"
+
 tests:unit:
     stage: test
     script:
