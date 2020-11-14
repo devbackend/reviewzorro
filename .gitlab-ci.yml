@@ -34,7 +34,7 @@ lint:phpcs:
         - vendor/bin/phpcs src
         - vendor/bin/phpcs tests
     dependencies:
-        - composer
+        - build:composer
     cache:
         key: "build-${CI_COMMIT_REF_SLUG}"
 
@@ -48,6 +48,6 @@ tests:unit:
     script:
         - vendor/bin/phpunit tests
     dependencies:
-        - composer
+        - build:composer
     cache:
         key: "build-${CI_COMMIT_REF_SLUG}"
