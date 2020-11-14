@@ -15,6 +15,8 @@ use ReviewZorro\Entities\File;
  */
 class FileTest extends TestCase
 {
+	private const FILE_PATH = '/foo/bar/filename.php';
+
 	public function testGetters()
 	{
 		$path = '/foo/bar/filename.php';
@@ -25,8 +27,6 @@ class FileTest extends TestCase
 		static::assertEquals('filename.php', $file->getName());
 		static::assertEquals('filename', $file->getName(false));
 	}
-
-	const FILE_PATH = '/foo/bar/filename.php';
 
 	/**
 	 * @expectedException InvalidArgumentException

@@ -17,7 +17,7 @@ use ReviewZorro\ValueObjects\CommentedFile;
  */
 class CommentTest extends TestCase
 {
-	const MESSAGE = 'Message text';
+	private const MESSAGE = 'Message text';
 
 	/** @var File */
 	private $file;
