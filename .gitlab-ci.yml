@@ -2,7 +2,6 @@ image: php:7.3
 
 stages:
     - build
-    - linter
     - test
 
 build:composer:
@@ -24,12 +23,7 @@ build:composer:
             - vendor/
 
 lint:phpcs:
-    stage: linter
-    only:
-        changes:
-            - .gitlab-ci.yml
-            - src
-            - tests
+    stage: test
     script:
         - vendor/bin/phpcs src
         - vendor/bin/phpcs tests
@@ -40,11 +34,6 @@ lint:phpcs:
 
 tests:unit:
     stage: test
-    only:
-        changes:
-            - .gitlab-ci.yml
-            - src
-            - tests
     script:
         - vendor/bin/phpunit tests
     dependencies:
