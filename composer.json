@@ -1,33 +1,34 @@
 {
-	"name": "devbackend/reviewzorro",
-	"description": "PHP Library for automatic code review",
-	"minimum-stability": "dev",
-	"license": "MIT",
-	"authors": [
-		{
-			"name": "Krivonos Ivan",
-			"email": "devbackend@yandex.ru"
-		}
-	],
-	"autoload": {
-		"psr-4": {
-			"ReviewZorro\\": "src/"
-		}
-	},
-	"autoload-dev": {
-		"psr-4": {
-			"ReviewZorro\\": "tests/"
-		}
-	},
-	"require": {
-		"php": ">=7.3",
-		"m4tthumphrey/php-gitlab-api": "^9.12@dev",
-		"php-http/guzzle6-adapter": "^1.0"
-	},
-	"require-dev": {
-		"phpunit/phpunit": "9.5.*",
-		"squizlabs/php_codesniffer": "3.*",
-		"mockery/mockery": "1.4.*",
-		"phpmd/phpmd": "2.9.*"
-	}
+    "name": "devbackend/reviewzorro",
+    "description": "PHP Library for automatic code review",
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Krivonos Ivan",
+            "email": "devbackend@yandex.ru"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ReviewZorro\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ReviewZorro\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=7.3",
+        "m4tthumphrey/php-gitlab-api": "^10.3",
+        "guzzlehttp/guzzle": "^7.0.1",
+        "http-interop/http-factory-guzzle": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "9.5.*",
+        "squizlabs/php_codesniffer": "3.*",
+        "mockery/mockery": "1.4.*",
+        "phpmd/phpmd": "2.9.*"
+    }
 }
