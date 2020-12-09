@@ -22,7 +22,7 @@ class CommentTest extends TestCase
 	/** @var File */
 	private $file;
 
-	protected function setUp()
+	protected function setUp(): void
 	{
 		parent::setUp();
 
@@ -38,11 +38,9 @@ class CommentTest extends TestCase
 		static::assertEquals(static::MESSAGE, $comment->getText());
 	}
 
-	/**
-	 * @expectedException InvalidArgumentException
-	 */
 	public function testShouldThrowExceptionOnEmptyMessage()
 	{
+		$this->expectException(InvalidArgumentException::class);
 		new Comment(
 			new CommentedFile($this->file, 10),
 			''

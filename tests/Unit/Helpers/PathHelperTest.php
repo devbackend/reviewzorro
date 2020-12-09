@@ -22,7 +22,7 @@ class PathHelperTest extends TestCase
 	 *
 	 * @author Ivan Krivonos <devbackend@yandex.ru>
 	 */
-	protected function setUp()
+	protected function setUp(): void
 	{
 		parent::setUp();
 

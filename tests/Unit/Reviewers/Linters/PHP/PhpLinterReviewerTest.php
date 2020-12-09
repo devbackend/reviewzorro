@@ -26,7 +26,7 @@ class PhpLinterReviewerTest extends MockeryTestCase
 	/** @var PhpFileChecker|MockInterface $checker */
 	private $checker;
 
-	protected function setUp()
+	protected function setUp(): void
 	{
 		parent::setUp();
 

@@ -26,11 +26,9 @@ class FileTest extends TestCase
 		static::assertEquals('filename', $file->getName(false));
 	}
 
-	/**
-	 * @expectedException InvalidArgumentException
-	 */
 	public function testShouldThrowExceptionOnEmptyFileName()
 	{
+		$this->expectException(InvalidArgumentException::class);
 		new File('');
 	}
 

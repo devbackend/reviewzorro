@@ -130,11 +130,9 @@ Time: 33ms; Memory: 6Mb
 		static::assertEquals($secondFile->getPath(), $comment->getCommentedFile()->getFile()->getPath());
 	}
 
-	/**
-	 * @expectedException Exception
-	 */
 	public function testParseShouldThrowExceptionIfFileNotDetected()
 	{
+		$this->expectException(Exception::class);
 		$output = '
 ---------------------------------------------------------------------------------------------------
 FOUND 5 ERRORS AFFECTING 3 LINES
